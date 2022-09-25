@@ -1,0 +1,12 @@
+.myBtn {
+	padding: 5px 15px;
+	background-color: red;
+	color: white;
+	border: none;
+	display: block;
+	transition: 0.2s linear all;
+	max-width: 150px;
+}
+.myBtn:hover {
+	cursor: pointer;
+}
