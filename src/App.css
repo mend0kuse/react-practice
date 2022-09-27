@@ -62,3 +62,8 @@
 .navbar__links {
   margin-left: auto;
 }
+.post__buttons {
+  display: flex;
+  column-gap: 10px;
+  margin-left: 5px  ;
+}

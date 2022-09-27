@@ -1,21 +1,51 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 
 import { Route, Navigate, Routes } from 'react-router-dom'
-import About from '../pages/About.jsx';
-import Posts from '../pages/Posts';
-import Error from '../pages/Error';
+
+import { AuthContext } from '../context/index.js';
+
+import { privateRoutes, publicRoutes } from '../routes/routes.js';
 
 
 function AppRouter() {
+	const { isAuth, setIsAuth } = useContext(AuthContext)
+	console.log(isAuth);
 	return (
-		<Routes>
-			<Route exact path='/about' element={<About />}></Route>
-			<Route exact path='/posts' element={<Posts />}></Route>
-			<Route exact path='/error' element={<Error />}></Route>
+		isAuth
+			? <Routes>
+				{
+					privateRoutes.map((route, index) => {
+						return <Route key={index} exact={route.exact} path={route.path} element={route.element}></Route>
+					})
+				}
+				<Route exact path='*' element={<Navigate to="/posts" />}></Route>
+			</Routes>
+			: <Routes>
+				{
+					publicRoutes.map((route, index) => {
+						return <Route key={index} exact={route.exact} path={route.path} element={route.element}></Route>
+					})
+				}
+				<Route exact path='*' element={<Navigate to="/login" />}></Route>
+			</Routes>
 
-			<Route path="*" element={<Navigate to="/error" />} />
-		</Routes>
+
+
+
+
+		// {
+		// 	publicRoutes.map(route => {
+		// 		return <Route exact={route.exact} path={route.path} element={route.element}></Route>
+		// 	})
+		// }
+
+
+
+		// <Route exact path='/error' element={<Error />}></Route>
+
+		// <Route path="*" element={<Navigate to="/error" />} /> 
+
 	)
 }
 

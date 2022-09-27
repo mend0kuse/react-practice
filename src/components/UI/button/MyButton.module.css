@@ -5,6 +5,7 @@
 	border: none;
 	display: block;
 	transition: 0.2s linear all;
+	min-width: 100px;
 	max-width: 150px;
 }
 .myBtn:hover {

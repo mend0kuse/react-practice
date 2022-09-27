@@ -12,7 +12,7 @@ import Loader from '../components/UI/loader/Loader';
 
 import { useSortedAndSearchedPosts } from '../hooks/usePost.js'
 import { useFetching } from '../hooks/useFetching.js'
-import PostService from '../components/API/PostService.js'
+import PostService from '../API/PostService.js'
 import { getPagesCount, pagesTotalArray } from '../utils/pages';
 import Pagination from '../components/UI/pagination/Pagination';
 
